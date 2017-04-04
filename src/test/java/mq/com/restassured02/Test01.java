@@ -21,7 +21,7 @@ public class Test01 {
 			accept(ContentType.JSON)
 				.header("Accept-Language", "en_US")
 					.contentType("application/x-www-form-urlencoded")
-						.auth().preemptive().basic("ATyfHxBENx8S400y_mxFfS3LpFEYNjOKR8MsJCFACWYutFjsK5pt0eyb5IxXqGv-0GVu3ZY-0liLe4pv", "EOIpohWlqYQrDX2kOzE256fBN2dNjCCfhid7xRPUg58FVW9Tap2QTmN96KnTjL5BmwgL9BXO-JBeY1yh")
+						.auth().preemptive().basic("ATyfHxBENx8S400y_mxFfS3LpFEYNjOKR8MsJCFACWYutFjsK5pt0eyb5IxXqGv-0GVu3ZY-0liLe4pv", "EOIpohWlqYQrDX2kOzE256fBN2dNjCCfhid7xRPUg58FVW9Tap2QTmN96KnTjL5BmwgL9BXO")
 						.formParam("grant_type", "client_credentials")
 						.post("https://api.sandbox.paypal.com/v1/oauth2/token").then().extract().response();
 		
