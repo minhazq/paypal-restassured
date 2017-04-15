@@ -1,15 +1,11 @@
 package mq.com.restassured02;
 
 import org.testng.annotations.Test;
-
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
-import static org.hamcrest.Matchers.equalTo;
-import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.preemptive;
+import static io.restassured.RestAssured.given;
 
 public class Test01 {
 
