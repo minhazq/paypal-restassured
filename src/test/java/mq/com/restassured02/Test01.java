@@ -8,8 +8,8 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import static org.hamcrest.Matchers.equalTo;
-
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.preemptive;
 
 public class Test01 {
 
@@ -22,12 +22,16 @@ public class Test01 {
 		
 		RestAssured.baseURI = "https://api.sandbox.paypal.com/"; //--->Service End Point 
 		RestAssured.basePath = "v1/oauth2/token"; // --------------->Method
-		RestAssured.authentication = preemptive().basic(clientId	, secret); // --------------> Basic Authentication [ need to do the static import]
+		
+		//Basic Authentication [ need to do the static import for preemptive]
+		RestAssured.authentication = preemptive().basic(clientId, secret); 
 		
 		
 		Response response = given()
-			.accept(ContentType.JSON)//---------------------------> accept is header specifing the  media type of the response that i am expecting
-					.contentType("application/x-www-form-urlencoded") //---> contentType is sepcifing the media type of the request being sent
+			//accept is header specifing the  media type of the response that i am expecting
+			.accept(ContentType.JSON)
+					//contentType is sepcifing the media type of the request being sent
+					.contentType("application/x-www-form-urlencoded") 
 						.formParam("grant_type", "client_credentials")
 							.post().then().extract().response();
 					
