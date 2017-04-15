@@ -32,7 +32,7 @@ public class Test01 {
 			.accept(ContentType.JSON)
 					//contentType is sepcifing the media type of the request being sent
 					.contentType("application/x-www-form-urlencoded") 
-						.formParam("grant_type", "client_credentials")
+						.formParam("grant_type", "client_credentials").log().all()
 							.post().then().extract().response();
 					
 		
