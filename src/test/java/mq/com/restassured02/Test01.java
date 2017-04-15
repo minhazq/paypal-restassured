@@ -17,17 +17,23 @@ public class Test01 {
 	@Test
 	public void getAccessToken(){
 		
-		 Response response = given().
-			accept(ContentType.JSON)
-				.header("Accept-Language", "en_US")
-					.contentType("application/x-www-form-urlencoded")
-						.auth().preemptive().basic("mxFfS3LpFEYNjOKR8MsJCFACWYutFjsK5pt0eyb5IxXqGv-0GVu3ZY-0liLe4pv", "EOIpohWlqYQrDX2kOzE256fBN2dNjCCfhid7xRPUg58FVW9Tap2QTmN96KnTjL5BmwgL9BXO")
+		String clientId = "ATyfHxBENx8S400y_mxFfS3LpFEYNjOKR8MsJCFACWYutFjsK5pt0eyb5IxXqGv-0GVu3ZY-0liL";
+		String secret = "EOIpohWlqYQrDX2kOzE256fBN2dNjCCfhid7xRPUg58FVW9Tap2QTmN96KnTjL5BmwgL9BXO-JB";
+		
+		RestAssured.baseURI = "https://api.sandbox.paypal.com/"; //--->Service End Point 
+		RestAssured.basePath = "v1/oauth2/token"; // --------------->Method
+		RestAssured.authentication = preemptive().basic(clientId	, secret); // --------------> Basic Authentication [ need to do the static import]
+		
+		
+		Response response = given()
+			.accept(ContentType.JSON)//---------------------------> accept is header specifing the  media type of the response that i am expecting
+					.contentType("application/x-www-form-urlencoded") //---> contentType is sepcifing the media type of the request being sent
 						.formParam("grant_type", "client_credentials")
-						.post("https://api.sandbox.paypal.com/v1/oauth2/token").then().extract().response();
+							.post().then().extract().response();
+					
 		
 		
-		
-		System.out.print(response.jsonPath().prettify());
+		System.out.println(response.jsonPath().prettify());
 		
 		
 		
